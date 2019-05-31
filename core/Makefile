@@ -3542,8 +3542,10 @@ endif
   ifeq ($(TARGET_NO_KERNEL),true)
     build_ota_package := false
   endif
+  ifneq (,$(INSTALLED_RECOVERYIMAGE_TARGET)$(filter true,$(BOARD_USES_RECOVERY_AS_BOOT)))
   ifeq ($(recovery_fstab),)
     build_ota_package := false
+  endif
   endif
   ifeq ($(TARGET_BUILD_PDK),true)
     build_ota_package := false
